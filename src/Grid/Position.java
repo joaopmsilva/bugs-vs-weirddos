@@ -30,6 +30,15 @@ public class Position {
 
     }
 
+    private Position (Grid grid, int col, int row, int dimension){
+        this.grid = grid;
+        this.col = col;
+        this.row= row;
+
+        placeholder = new Rectangle(col,row, CELL_SIZE*dimension, CELL_SIZE*dimension);
+
+    }
+
 
     public void show() {
         placeholder.fill();

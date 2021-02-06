@@ -9,7 +9,7 @@ public class PlayerGrid extends Grid {
     public PlayerGrid(int cols, int rows) {
 
         super(cols, rows);
-        playerField = new Rectangle(PADDING+CELL_SIZE, PADDING+CELL_SIZE, cols*CELL_SIZE, rows*CELL_SIZE);
+        playerField = new Rectangle(PADDING+CELL_SIZE, PADDING+CELL_SIZE, cols*CELL_SIZE-CELL_SIZE, rows*CELL_SIZE-CELL_SIZE);
         playerField.draw();
 
     }

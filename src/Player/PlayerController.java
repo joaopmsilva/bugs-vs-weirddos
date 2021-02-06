@@ -10,9 +10,11 @@ import java.security.Key;
 public class PlayerController implements KeyboardHandler {
 
     private Keyboard keyboard;
+    private Player player;
 
-    public PlayerController(){
+    public PlayerController(int col, int row){
         keyboard = new Keyboard(this);
+        player = new Player(col, row);
     }
 
     public void init() {
@@ -43,15 +45,22 @@ public class PlayerController implements KeyboardHandler {
        switch (keyboardEvent.getKey()) {
            case KeyboardEvent.KEY_DOWN:
 
+               player.move(Direction.DOWN);
                break;
+
            case KeyboardEvent.KEY_UP:
 
+               player.move(Direction.UP);
                break;
+
            case KeyboardEvent.KEY_LEFT:
 
+               player.move(Direction.LEFT);
                break;
+
            case KeyboardEvent.KEY_RIGHT:
 
+               player.move(Direction.RIGHT);
                break;
 
        }

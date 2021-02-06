@@ -33,6 +33,11 @@ public abstract class Grid  {
         return rowNum;
     }
 
+    public int getCellSize(){
+
+        return CELL_SIZE;
+    }
+
 
 
 

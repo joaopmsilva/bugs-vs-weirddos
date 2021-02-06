@@ -12,7 +12,6 @@ public class Position {
     private int col;
     private int row;
     private Grid grid;
-    private Cpu cpu;
 
     private Rectangle placeholder;
 
@@ -36,8 +35,7 @@ public class Position {
 
     }
 
-    public Position (Grid grid, int col, int row, int dimension, Cpu cpu){
-       this.cpu = cpu;
+    public Position (Grid grid, int col, int row, int dimension){
         this.grid = grid;
         this.col = col;
         this.row= row;
@@ -47,7 +45,7 @@ public class Position {
 
     }
 
-    public void moveDown(){
+    public void moveDown(Cpu cpu){
 
 
         if(row + 1 > grid.getRowNum() - 1 || cpu.isAtCpuBorder(this)){

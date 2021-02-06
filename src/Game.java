@@ -16,10 +16,10 @@ public class Game {
         playerGrid = new PlayerGrid(20, 20);
 
         bugGrid = new BugGrid(20, 20);
-        playerController = new PlayerController(playerGrid);
+        cpu = new Cpu(playerGrid);
+        playerController = new PlayerController(playerGrid, cpu);
         playerController.init();
 
-        cpu = new Cpu(playerGrid);
 
     }
 

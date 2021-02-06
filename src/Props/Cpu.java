@@ -12,7 +12,7 @@ public class Cpu {
 
     public Cpu(PlayerGrid playerGrid){
 
-        position = new Position(playerGrid, (playerGrid.getColNum()/2)-(DIMENSION/2), (playerGrid.getRowNum()/2)-(DIMENSION/2), DIMENSION, this);
+        position = new Position(playerGrid, (playerGrid.getColNum()/2)-(DIMENSION/2), (playerGrid.getRowNum()/2)-(DIMENSION/2), DIMENSION);
         this.playerGrid = playerGrid;
 
         health = 100;

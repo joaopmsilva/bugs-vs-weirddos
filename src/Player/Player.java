@@ -9,11 +9,12 @@ public class Player {
     private Position position;
     private PlayerGrid playerGrid;
 
-    public Player(int col, int row){
 
-        playerGrid = new PlayerGrid(col, row);
+    public Player(PlayerGrid playerGrid){
+
         position = new Position(playerGrid, 5, 5);
         speed = 1;
+        this.playerGrid = playerGrid;
     }
 
     public void move(Direction direction){

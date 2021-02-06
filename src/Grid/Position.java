@@ -1,5 +1,6 @@
 package Grid;
 
+import Props.Cpu;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
@@ -11,6 +12,7 @@ public class Position {
     private int col;
     private int row;
     private Grid grid;
+    private Cpu cpu;
 
     private Rectangle placeholder;
 
@@ -24,6 +26,7 @@ public class Position {
     }
 
     public Position(Grid grid, int col, int row) {
+
         this.grid = grid;
         this.col = col;
         this.row = row;
@@ -33,7 +36,8 @@ public class Position {
 
     }
 
-    private Position (Grid grid, int col, int row, int dimension){
+    public Position (Grid grid, int col, int row, int dimension, Cpu cpu){
+       this.cpu = cpu;
         this.grid = grid;
         this.col = col;
         this.row= row;
@@ -46,7 +50,7 @@ public class Position {
     public void moveDown(){
 
 
-        if(row + 1 > grid.getRowNum() - 1){
+        if(row + 1 > grid.getRowNum() - 1 || cpu.isAtCpuBorder(this)){
             return;
         }
         placeholder.translate(0, CELL_SIZE);
@@ -105,4 +109,8 @@ public class Position {
         return placeholder.getColor();
     }
 
+    public boolean equals(Position position){
+        return (this.getRow()==position.getRow() && this.getCol()== position.getCol());
+
+    }
 }

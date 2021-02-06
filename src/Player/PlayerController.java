@@ -1,5 +1,6 @@
 package Player;
 
+import Grid.PlayerGrid;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -11,10 +12,14 @@ public class PlayerController implements KeyboardHandler {
 
     private Keyboard keyboard;
     private Player player;
+    private PlayerGrid playerGrid;
 
-    public PlayerController(int col, int row){
+    public PlayerController(PlayerGrid playerGrid){
         keyboard = new Keyboard(this);
-        player = new Player(col, row);
+        player = new Player(playerGrid);
+
+        this.playerGrid = playerGrid;
+
     }
 
     public void init() {

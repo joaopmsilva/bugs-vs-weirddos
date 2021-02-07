@@ -23,6 +23,10 @@ public class PlayerController implements KeyboardHandler {
 
     }
 
+    public Player getPlayer(){
+        return player;
+    }
+
     public void init() {
         KeyboardEvent eventUp = new KeyboardEvent();
         eventUp.setKey(KeyboardEvent.KEY_UP);

@@ -68,8 +68,8 @@ public class Position {
         if(row + 1 > grid.getRowNum() - 1 || cpu.isAtCpuTopBorder(this)){
             return;
         }
-        placeholder.translate(0, CELL_SIZE);
         row++;
+        placeholder.translate(0, CELL_SIZE);
     }
 
     public void moveUp(Cpu cpu){
@@ -77,8 +77,8 @@ public class Position {
         if(row - 1 < 1 || cpu.isAtCpuBottomBorder(this)){
          return;
         }
-        placeholder.translate(0, -CELL_SIZE);
         row--;
+        placeholder.translate(0, -CELL_SIZE);
     }
 
     public void moveRight(Cpu cpu){
@@ -86,8 +86,8 @@ public class Position {
         if(col + 1 > grid.getColNum() - 1 || cpu.isAtCpuLeftBorder(this)){
             return;
         }
-        placeholder.translate(CELL_SIZE, 0);
         col++;
+        placeholder.translate(CELL_SIZE, 0);
     }
 
     public void moveLeft(Cpu cpu){
@@ -95,8 +95,8 @@ public class Position {
         if(col - 1 < 1 || cpu.isAtCpuRightBorder(this)){
             return;
         }
-        placeholder.translate(-CELL_SIZE, 0);
         col--;
+        placeholder.translate(-CELL_SIZE, 0);
     }
 
 
@@ -106,6 +106,8 @@ public class Position {
 
     public void hide() {
         placeholder.delete();
+        col = -1;
+        row = -1;
     }
 
     public int getCol() {

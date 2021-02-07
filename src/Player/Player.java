@@ -20,6 +20,10 @@ public class Player {
         this.cpu = cpu;
     }
 
+    public Position getPlayerPosition(){
+        return position;
+    }
+
     public void move(Direction direction){
         switch(direction){
 

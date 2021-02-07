@@ -12,11 +12,12 @@ public abstract class Bug {
     private boolean isAtCpu;
     private BugGrid bugGrid;
     private Cpu cpu;
-
     protected Position pos;
 
     private int destCol;
     private int destRow;
+
+
 
     public Bug(BugGrid bugGrid, Cpu cpu){
         this.bugGrid=bugGrid;
@@ -29,23 +30,46 @@ public abstract class Bug {
 
     }
 
+    public boolean getIsDead(){
+        return isDead;
+    }
+
+    public void setIsDead(){
+        isDead = true;
+        pos.hide();
+
+    }
+
+    public Position getBugPosition(){
+        return pos;
+    }
+
     public void bugMove() {
+        if(isDead){
+            return;
+        }
         isAtCpu();
         if (isAtCpu) {
             cpu.loseHealth(damage);
             return;
         }
         if(pos.getCol()==destCol){
-            if (pos.getCol() < destCol) {
-                pos.moveRight(cpu);
-            } else if (pos.getCol() > destCol) {
-                pos.moveLeft(cpu);
-            }
-        } else if (pos.getRow()==destRow){
             if (pos.getRow() < destRow) {
                 pos.moveDown(cpu);
+                return;
             } else {
                 pos.moveUp(cpu);
+                return;
+            }
+
+        }
+        if (pos.getRow()==destRow){
+            if (pos.getCol() < destCol) {
+                pos.moveRight(cpu);
+                return;
+            } else {
+                pos.moveLeft(cpu);
+                return;
             }
         }
         int chooseDirection = (int) (Math.random() * 2);

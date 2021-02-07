@@ -1,6 +1,10 @@
+import Bug.Bug;
 import Bug.BugOne;
 import Grid.BugGrid;
+import Grid.CollisionDetector;
 import Grid.PlayerGrid;
+import Grid.Position;
+import Player.Player;
 import Player.PlayerController;
 import Props.Cpu;
 
@@ -11,8 +15,11 @@ public class Game {
     private BugGrid bugGrid;
     private Cpu cpu;
     private PlayerGrid playerGrid;
-    private BugOne bug1;
     private final int DELAY=500;
+    private CollisionDetector collisionDetector;
+    private Bug[] bugs;
+    private int stage = 1;
+
 
     public void init() throws InterruptedException {
 
@@ -22,16 +29,27 @@ public class Game {
         cpu = new Cpu(playerGrid);
         playerController = new PlayerController(playerGrid, cpu);
         playerController.init();
-        bug1 = new BugOne(bugGrid, cpu);
+        collisionDetector = new CollisionDetector();
 
-        while(cpu.getHealth()>0){
-            Thread.sleep(DELAY);
-            bug1.bugMove();
+        bugs = new Bug[stage + stage * 2];
+        for (int i = 0; i < bugs.length; i++) {
+            bugs[i] = new BugOne(bugGrid, cpu);
         }
 
+        int count = 0;
 
+        while (cpu.getHealth() > 0) {
+            Thread.sleep(DELAY);
+            for (int i = 0; i< bugs.length; i++) {
+                bugs[i].bugMove();
+                if (collisionDetector.collisionDetector(playerController.getPlayer().getPlayerPosition(), bugs[i].getBugPosition())) {
+                    bugs[i].setIsDead();
+                    count++;
+                    System.out.println(count);
+                }
+            }
+
+        }
     }
-
-
 
 }

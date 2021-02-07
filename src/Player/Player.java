@@ -30,17 +30,17 @@ public class Player {
 
             case UP:
 
-                position.moveUp();
+                position.moveUp(cpu);
                 break;
 
             case RIGHT:
 
-                position.moveRight();
+                position.moveRight(cpu);
                 break;
 
             case LEFT:
 
-                position.moveLeft();
+                position.moveLeft(cpu);
                 break;
         }
 

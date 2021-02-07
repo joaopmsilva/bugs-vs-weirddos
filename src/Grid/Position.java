@@ -17,8 +17,25 @@ public class Position {
 
     public Position(Grid grid){
         this.grid = grid;
-        col = (int) Math.random()* grid.getColNum();
-        row = (int) Math.random()* grid.getRowNum();
+        int randomizer = (int)(Math.random()*4);
+        switch(randomizer){
+           case 0:
+               col=0;
+               row = (int) (Math.random()* grid.getRowNum());
+               break;
+           case 1:
+               col= grid.getColNum();
+               row = (int) (Math.random()* grid.getRowNum());
+               break;
+           case 2:
+               col = (int) (Math.random()* grid.getColNum());
+               row=0;
+               break;
+           case 3:
+               col = (int) (Math.random()* grid.getColNum());
+               row= grid.getRowNum();
+               break;
+            }
 
         placeholder = new Rectangle(col*CELL_SIZE+PADDING,row*CELL_SIZE+PADDING, CELL_SIZE, CELL_SIZE);
         show();
@@ -48,34 +65,34 @@ public class Position {
     public void moveDown(Cpu cpu){
 
 
-        if(row + 1 > grid.getRowNum() - 1 || cpu.isAtCpuBorder(this)){
+        if(row + 1 > grid.getRowNum() - 1 || cpu.isAtCpuTopBorder(this)){
             return;
         }
         placeholder.translate(0, CELL_SIZE);
         row++;
     }
 
-    public void moveUp(){
+    public void moveUp(Cpu cpu){
 
-        if(row - 1 < 1){
+        if(row - 1 < 1 || cpu.isAtCpuBottomBorder(this)){
          return;
         }
         placeholder.translate(0, -CELL_SIZE);
         row--;
     }
 
-    public void moveRight(){
+    public void moveRight(Cpu cpu){
 
-        if(col + 1 > grid.getColNum() - 1){
+        if(col + 1 > grid.getColNum() - 1 || cpu.isAtCpuLeftBorder(this)){
             return;
         }
         placeholder.translate(CELL_SIZE, 0);
         col++;
     }
 
-    public void moveLeft(){
+    public void moveLeft(Cpu cpu){
 
-        if(col - 1 < 1){
+        if(col - 1 < 1 || cpu.isAtCpuRightBorder(this)){
             return;
         }
         placeholder.translate(-CELL_SIZE, 0);

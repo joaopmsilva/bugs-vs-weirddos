@@ -7,4 +7,5 @@ public class Main {
         game.init(30, 30);
 
     }
+
 }

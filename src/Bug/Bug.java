@@ -32,10 +32,6 @@ public abstract class Bug {
 
     }
 
-    public boolean getIsDead(){
-        return isDead;
-    }
-
     public int getDeadBugs(){
         return deadBugs;
     }
@@ -109,8 +105,5 @@ public abstract class Bug {
         }
 
     }
-
-
-
 
 }

@@ -11,7 +11,6 @@ public abstract class Grid  {
     private int rowNum;
 
     public Grid(int cols, int rows) {
-
         colNum = cols;
         rowNum = rows;
     }
@@ -34,7 +33,6 @@ public abstract class Grid  {
     }
 
     public int getCellSize(){
-
         return CELL_SIZE;
     }
 

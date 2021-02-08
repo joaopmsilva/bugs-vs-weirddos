@@ -4,7 +4,7 @@ public class Main {
 
         Game game = new Game();
 
-        game.init();
+        game.init(30, 30);
 
     }
 }

@@ -5,7 +5,7 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 public abstract class Grid  {
 
     protected static final int PADDING = 10;
-    protected static final int CELL_SIZE = 15;
+    protected static final int CELL_SIZE = 25;
 
     private int colNum;
     private int rowNum;

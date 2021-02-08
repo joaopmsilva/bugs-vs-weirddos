@@ -1,5 +1,6 @@
 package Player;
 
+import Grid.CollisionDetector;
 import Grid.PlayerGrid;
 import Props.Cpu;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
@@ -15,9 +16,9 @@ public class PlayerController implements KeyboardHandler {
     private Player player;
     private PlayerGrid playerGrid;
 
-    public PlayerController(PlayerGrid playerGrid, Cpu cpu){
+    public PlayerController(PlayerGrid playerGrid, Cpu cpu, CollisionDetector collisionDetector){
         keyboard = new Keyboard(this);
-        player = new Player(playerGrid, cpu);
+        player = new Player(playerGrid, cpu, collisionDetector);
 
         this.playerGrid = playerGrid;
 
@@ -54,25 +55,17 @@ public class PlayerController implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
        switch (keyboardEvent.getKey()) {
            case KeyboardEvent.KEY_DOWN:
-
                player.move(Direction.DOWN);
                break;
-
            case KeyboardEvent.KEY_UP:
-
                player.move(Direction.UP);
                break;
-
            case KeyboardEvent.KEY_LEFT:
-
                player.move(Direction.LEFT);
                break;
-
            case KeyboardEvent.KEY_RIGHT:
-
                player.move(Direction.RIGHT);
                break;
-
        }
 
     }

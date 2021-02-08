@@ -10,7 +10,7 @@ public BugOne(BugGrid bugGrid, Cpu cpu){
     super(bugGrid, cpu);
 
     pos.setColor(Color.RED);
-    damage = 5;
+    damage = 1;
 }
 
 

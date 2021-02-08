@@ -2,21 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30470d58-32b5-42d5-adcc-a2ad718acb06" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Bug/BugOne.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/bugs-vs-weirddos.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bugs-vs-weirddos.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Bug/Bug.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Bug/Bug.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Bug/BugsOne.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Bug/BugOne.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Bug/BugOne.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Grid/Position.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Grid/Position.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Player/Player$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Player/Player$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Player/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Props/Cpu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Props/Cpu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Player/PlayerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Player/PlayerController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Bug/Bug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bug/Bug.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bug/BugsOne.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bug/BugOne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bug/BugOne.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Grid/CollisionDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/CollisionDetector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Grid/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Grid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Props/Cpu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Props/Cpu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player/PlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player/PlayerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Props/CoffeeCup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Props/CoffeeCup.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +39,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunManager">
@@ -74,5 +82,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

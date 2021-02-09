@@ -44,10 +44,13 @@ public class Player {
                     break;
             }
             collisionDetector.isOnTopOfBug(position);
+            collisionDetector.isOnCoffeeCup(position);
 
         }
 
     }
+
+
 
 
 }

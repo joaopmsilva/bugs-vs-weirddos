@@ -14,6 +14,7 @@ public abstract class Bug {
     private Cpu cpu;
     protected Position pos;
     private static int deadBugs;
+    private static int stageDeadBugs;
 
     private int destCol;
     private int destRow;
@@ -23,7 +24,7 @@ public abstract class Bug {
     public Bug(BugGrid bugGrid, Cpu cpu){
         this.bugGrid=bugGrid;
         this.cpu=cpu;
-        deadBugs = 0;
+        stageDeadBugs = 0;
 
         destCol = (int)(Math.ceil(bugGrid.getColNum()/2));
         destRow = (int)(Math.ceil(bugGrid.getRowNum()/2));
@@ -36,10 +37,16 @@ public abstract class Bug {
         return deadBugs;
     }
 
+    public int getStageDeadBugs() {
+        return stageDeadBugs;
+    }
+
     public void setIsDead(){
         isDead = true;
         pos.hide();
         deadBugs++;
+        stageDeadBugs++;
+        System.out.println(deadBugs);
     }
 
     public Position getBugPosition(){

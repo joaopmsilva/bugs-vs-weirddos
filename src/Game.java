@@ -4,6 +4,7 @@ import Grid.BugGrid;
 import Grid.CollisionDetector;
 import Grid.PlayerGrid;
 import Player.PlayerController;
+import Props.CoffeeCup;
 import Props.Cpu;
 
 public class Game {
@@ -17,6 +18,8 @@ public class Game {
     private CollisionDetector collisionDetector;
     private Bug[] bugs;
     private int stage = 1;
+    private CoffeeCup[] coffeeCups;
+
 
     public void init(int cols, int rows) throws InterruptedException {
         bugGrid = new BugGrid(cols, rows);
@@ -37,6 +40,13 @@ public class Game {
             bugs[i] = new BugOne(bugGrid, cpu);
         }
         collisionDetector.setBugsArray(bugs);
+
+        coffeeCups = new CoffeeCup[stage-1];
+        for (int j = 0; j < coffeeCups.length; j++) {
+            coffeeCups[j] = new CoffeeCup(playerGrid);
+        }
+        collisionDetector.setCoffeeCups(coffeeCups);
+
         startStage();
 
     }
@@ -45,7 +55,7 @@ public class Game {
 
         Thread.sleep(STAGE_DELAY * stage);
 
-        while (bugs[0].getDeadBugs() < bugs.length && cpu.getHealth() > 0) {
+        while (bugs[0].getStageDeadBugs() < bugs.length && cpu.getHealth() > 0) {
             Thread.sleep(DELAY);
             for (int i = 0; i < bugs.length; i++) {
                 if(cpu.getHealth() > 0) {
@@ -58,10 +68,23 @@ public class Game {
         }
 
         if(cpu.getHealth() < 1) {
-            System.out.println("Game Over at stage " + stage + " with X bugs killed!");
+            System.out.println("Game Over at stage " + stage + " with " + bugs[0].getDeadBugs() +
+                    " bugs killed and drank way too much coffee: " + coffeeCups[0].getPickedCoffees());
             return;
         }
         setStage(++stage);
+
+    }
+
+    private void killAll(){
+
+        coffeeCups[0].drinkCoffees(3);
+
+        if (coffeeCups[0].getPickedCoffees() >= 3) {
+            for (Bug bug : bugs) {
+                bug.setIsDead();
+            }
+        }
 
     }
 

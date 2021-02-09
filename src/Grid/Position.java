@@ -1,5 +1,6 @@
 package Grid;
 
+import Props.CoffeeCup;
 import Props.Cpu;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
@@ -39,6 +40,21 @@ public class Position {
 
         placeholder = new Rectangle(col*CELL_SIZE+PADDING,row*CELL_SIZE+PADDING, CELL_SIZE, CELL_SIZE);
         show();
+    }
+
+    public Position(Grid grid, String c) {
+        this.grid = grid;
+        row = (int) (Math.random()*grid.getRowNum());
+        col = (int) (Math.random()*grid.getColNum());
+
+        if ((grid.getColNum()/2-1 < col && col < grid.getColNum()/2+1) && (grid.getRowNum()/2-1 < row && row < grid.getRowNum()/2+1) ) {
+            row -= 5;
+        }
+
+        placeholder = new Rectangle(col*CELL_SIZE+PADDING, row*CELL_SIZE+PADDING, CELL_SIZE, CELL_SIZE);
+        placeholder.setColor(Color.BLUE);
+        show();
+
     }
 
     public Position(Grid grid, int col, int row) {

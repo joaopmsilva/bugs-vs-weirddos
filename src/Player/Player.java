@@ -50,7 +50,7 @@ public class Player {
 
     }
 
-
-
-
+    public void killAll(){
+        collisionDetector.killAll();
+    }
 }

@@ -13,7 +13,7 @@ public class Game {
     private BugGrid bugGrid;
     private Cpu cpu;
     private PlayerGrid playerGrid;
-    private final int DELAY=500;
+    private final int DELAY=800;
     private final int STAGE_DELAY=1000;
     private CollisionDetector collisionDetector;
     private Bug[] bugs;
@@ -35,17 +35,25 @@ public class Game {
 
     public void setStage(int stage) throws InterruptedException {
 
-        bugs = new Bug[stage + stage * 2];
-        for (int i = 0; i < bugs.length; i++) {
-            bugs[i] = new BugOne(bugGrid, cpu);
+        if(stage >= 2){
+            for(CoffeeCup cup: coffeeCups){
+                cup.setWasted();
+            }
         }
-        collisionDetector.setBugsArray(bugs);
 
         coffeeCups = new CoffeeCup[stage-1];
         for (int j = 0; j < coffeeCups.length; j++) {
             coffeeCups[j] = new CoffeeCup(playerGrid);
         }
         collisionDetector.setCoffeeCups(coffeeCups);
+
+
+        bugs = new Bug[stage + stage * 2];
+        for (int i = 0; i < bugs.length; i++) {
+            bugs[i] = new BugOne(bugGrid, cpu, collisionDetector);
+        }
+        collisionDetector.setBugsArray(bugs);
+
 
         startStage();
 
@@ -76,16 +84,5 @@ public class Game {
 
     }
 
-    private void killAll(){
-
-        coffeeCups[0].drinkCoffees(3);
-
-        if (coffeeCups[0].getPickedCoffees() >= 3) {
-            for (Bug bug : bugs) {
-                bug.setIsDead();
-            }
-        }
-
-    }
 
 }

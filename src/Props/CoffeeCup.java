@@ -21,6 +21,11 @@ public class CoffeeCup {
         System.out.println(pickedCoffees);
     }
 
+    public void setWasted(){
+        isPicked = true;
+        position.hide();
+    }
+
     public Position getPosition(){
         return position;
     }

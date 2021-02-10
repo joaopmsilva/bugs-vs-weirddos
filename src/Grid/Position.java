@@ -47,14 +47,18 @@ public class Position {
         row = (int) (Math.random()*grid.getRowNum());
         col = (int) (Math.random()*grid.getColNum());
 
-        if ((grid.getColNum()/2-1 < col && col < grid.getColNum()/2+1) && (grid.getRowNum()/2-1 < row && row < grid.getRowNum()/2+1) ) {
+        if ((grid.getColNum()/2-1 <= col && col <= grid.getColNum()/2+1) && (grid.getRowNum()/2-1 <= row && row <= grid.getRowNum()/2+1) ) {
             row -= 5;
+        }
+
+        if(col == 0 || row == 0){
+            row++;
+            col++;
         }
 
         placeholder = new Rectangle(col*CELL_SIZE+PADDING, row*CELL_SIZE+PADDING, CELL_SIZE, CELL_SIZE);
         placeholder.setColor(Color.BLUE);
         show();
-
     }
 
     public Position(Grid grid, int col, int row) {

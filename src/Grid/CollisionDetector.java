@@ -40,4 +40,24 @@ public class CollisionDetector {
 
     }
 
+    public void bugIsOnCoffeeCup(Position position){
+        for(CoffeeCup cup: coffeeCups){
+            if(cup.getPosition().equals(position)){
+                cup.setWasted();
+            }
+        }
+    }
+
+    public void killAll(){
+        if (coffeeCups[0].getPickedCoffees() >= 3) {
+            for (Bug bug : bugs) {
+                bug.setIsDead();
+            }
+            coffeeCups[0].drinkCoffees(3);
+        }
+
+
+
+    }
+
 }

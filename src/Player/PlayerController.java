@@ -8,13 +8,15 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
-import java.security.Key;
+
 
 public class PlayerController implements KeyboardHandler {
 
     private Keyboard keyboard;
     private Player player;
     private PlayerGrid playerGrid;
+
+
 
     public PlayerController(PlayerGrid playerGrid, Cpu cpu, CollisionDetector collisionDetector){
         keyboard = new Keyboard(this);
@@ -45,10 +47,15 @@ public class PlayerController implements KeyboardHandler {
         eventLeft.setKey(KeyboardEvent.KEY_LEFT);
         eventLeft.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
+        KeyboardEvent eventUse = new KeyboardEvent();
+        eventUse.setKey(KeyboardEvent.KEY_E);
+        eventUse.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
         keyboard.addEventListener(eventUp);
         keyboard.addEventListener(eventDown);
         keyboard.addEventListener(eventLeft);
         keyboard.addEventListener(eventRight);
+        keyboard.addEventListener(eventUse);
     }
 
     @Override
@@ -65,6 +72,9 @@ public class PlayerController implements KeyboardHandler {
                break;
            case KeyboardEvent.KEY_RIGHT:
                player.move(Direction.RIGHT);
+               break;
+           case KeyboardEvent.KEY_E:
+               player.killAll();
                break;
        }
 

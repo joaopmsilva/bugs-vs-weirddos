@@ -1,6 +1,7 @@
 package Bug;
 
 import Grid.BugGrid;
+import Grid.CollisionDetector;
 import Grid.Position;
 import Props.Cpu;
 
@@ -15,15 +16,17 @@ public abstract class Bug {
     protected Position pos;
     private static int deadBugs;
     private static int stageDeadBugs;
+    private CollisionDetector collisionDetector;
 
     private int destCol;
     private int destRow;
 
 
 
-    public Bug(BugGrid bugGrid, Cpu cpu){
+    public Bug(BugGrid bugGrid, Cpu cpu, CollisionDetector collisionDetector){
         this.bugGrid=bugGrid;
         this.cpu=cpu;
+        this.collisionDetector = collisionDetector;
         stageDeadBugs = 0;
 
         destCol = (int)(Math.ceil(bugGrid.getColNum()/2));
@@ -57,6 +60,7 @@ public abstract class Bug {
         if(isDead){
             return;
         }
+        collisionDetector.bugIsOnCoffeeCup(pos);
         isAtCpu();
         if (isAtCpu) {
             cpu.loseHealth(damage);
@@ -112,5 +116,6 @@ public abstract class Bug {
         }
 
     }
+
 
 }

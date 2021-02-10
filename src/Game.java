@@ -3,9 +3,11 @@ import Bug.BugOne;
 import Grid.BugGrid;
 import Grid.CollisionDetector;
 import Grid.PlayerGrid;
+import Grid.ScoreGrid;
 import Player.PlayerController;
 import Props.CoffeeCup;
 import Props.Cpu;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 
 public class Game {
 
@@ -13,22 +15,29 @@ public class Game {
     private BugGrid bugGrid;
     private Cpu cpu;
     private PlayerGrid playerGrid;
+    private ScoreGrid scoreGrid;
     private final int DELAY=800;
     private final int STAGE_DELAY=1000;
     private CollisionDetector collisionDetector;
     private Bug[] bugs;
     private int stage = 1;
     private CoffeeCup[] coffeeCups;
+    private Text bugsKillScore;
+    private Text coffeeScore;
 
 
     public void init(int cols, int rows) throws InterruptedException {
+        scoreGrid = new ScoreGrid(cols, rows);
         bugGrid = new BugGrid(cols, rows);
         playerGrid = new PlayerGrid(cols, rows);
         cpu = new Cpu(playerGrid);
         collisionDetector = new CollisionDetector();
         playerController = new PlayerController(playerGrid, cpu, collisionDetector);
         playerController.init();
-
+        bugsKillScore = new Text( scoreGrid.getKillPosX(), scoreGrid.getKillPosY(), "Score : 0");
+        bugsKillScore.draw();
+        coffeeScore = new Text(scoreGrid.getCoffeePosX(), scoreGrid.getCoffeePosY(), "Coffees : 0");
+        coffeeScore.draw();
         setStage(stage);
 
     }
@@ -68,6 +77,14 @@ public class Game {
             for (int i = 0; i < bugs.length; i++) {
                 if(cpu.getHealth() > 0) {
                     bugs[i].bugMove();
+                    bugsKillScore.delete();
+                    bugsKillScore = new Text( scoreGrid.getKillPosX(), scoreGrid.getKillPosY(), "Score : " + bugs[0].getDeadBugs());
+                    bugsKillScore.draw();
+                    if(stage>1) {
+                        coffeeScore.delete();
+                        coffeeScore = new Text(scoreGrid.getCoffeePosX(), scoreGrid.getCoffeePosY(), "Coffees: " + coffeeCups[0].getPickedCoffees());
+                        coffeeScore.draw();
+                    }
                     if (collisionDetector.collisionDetector(bugs[i].getBugPosition(), playerController.getPlayer().getPlayerPosition())) {
                         bugs[i].setIsDead();
                     }

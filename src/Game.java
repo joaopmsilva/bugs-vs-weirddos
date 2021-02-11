@@ -24,6 +24,7 @@ public class Game {
     private CoffeeCup[] coffeeCups;
     private Text bugsKillScore;
     private Text coffeeScore;
+    private Text cpuScore;
 
 
     public void init(int cols, int rows) throws InterruptedException {
@@ -38,6 +39,8 @@ public class Game {
         bugsKillScore.draw();
         coffeeScore = new Text(scoreGrid.getCoffeePosX(), scoreGrid.getCoffeePosY(), "Coffees : 0");
         coffeeScore.draw();
+        cpuScore = new Text(cpu.getCpuHealthXPos(), cpu.getCpuHealthYPos(), "100");
+        cpuScore.draw();
         setStage(stage);
 
     }
@@ -80,6 +83,9 @@ public class Game {
                     bugsKillScore.delete();
                     bugsKillScore = new Text( scoreGrid.getKillPosX(), scoreGrid.getKillPosY(), "Score : " + bugs[0].getDeadBugs());
                     bugsKillScore.draw();
+                    cpuScore.delete();
+                    cpuScore = new Text(cpu.getCpuHealthXPos(), cpu.getCpuHealthYPos(), String.valueOf(cpu.getHealth()));
+                    cpuScore.draw();
                     if(stage>1) {
                         coffeeScore.delete();
                         coffeeScore = new Text(scoreGrid.getCoffeePosX(), scoreGrid.getCoffeePosY(), "Coffees: " + coffeeCups[0].getPickedCoffees());

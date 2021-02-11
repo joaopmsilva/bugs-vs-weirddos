@@ -4,6 +4,7 @@ import Props.CoffeeCup;
 import Props.Cpu;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import static Grid.Grid.CELL_SIZE;
 import static Grid.Grid.PADDING;
@@ -13,6 +14,7 @@ public class Position {
     private int col;
     private int row;
     private Grid grid;
+    private Picture picture;
 
     private Rectangle placeholder;
 
@@ -38,8 +40,9 @@ public class Position {
                break;
             }
 
-        placeholder = new Rectangle(col*CELL_SIZE+PADDING,row*CELL_SIZE+PADDING, CELL_SIZE, CELL_SIZE);
-        show();
+        picture = new Picture (col*CELL_SIZE+PADDING,row*CELL_SIZE+PADDING, "bug-up.png");
+        picture.draw();
+
     }
 
     public Position(Grid grid, String c) {
@@ -56,9 +59,9 @@ public class Position {
             col++;
         }
 
-        placeholder = new Rectangle(col*CELL_SIZE+PADDING, row*CELL_SIZE+PADDING, CELL_SIZE, CELL_SIZE);
-        placeholder.setColor(Color.BLUE);
-        show();
+        picture = new Picture (col*CELL_SIZE+PADDING, row*CELL_SIZE+PADDING, "coffee.png");
+        picture.draw();
+
     }
 
     public Position(Grid grid, int col, int row) {
@@ -67,8 +70,8 @@ public class Position {
         this.col = col;
         this.row = row;
 
-        placeholder = new Rectangle(col*CELL_SIZE+PADDING,row*CELL_SIZE+PADDING, CELL_SIZE, CELL_SIZE);
-        show();
+        picture = new Picture(col*CELL_SIZE+PADDING,row*CELL_SIZE+PADDING, "skull.png");
+        picture.draw();
 
     }
 
@@ -77,8 +80,8 @@ public class Position {
         this.col = col;
         this.row= row;
 
-        placeholder = new Rectangle(col*CELL_SIZE+PADDING,row*CELL_SIZE+PADDING, CELL_SIZE*dimension, CELL_SIZE*dimension);
-        show();
+        picture = new Picture(col*CELL_SIZE+PADDING,row*CELL_SIZE+PADDING, "cpu75.jpg");
+        picture.draw();
 
     }
 
@@ -89,7 +92,7 @@ public class Position {
             return;
         }
         row++;
-        placeholder.translate(0, CELL_SIZE);
+        picture.translate(0, CELL_SIZE);
     }
 
     public void moveUp(Cpu cpu){
@@ -98,7 +101,7 @@ public class Position {
          return;
         }
         row--;
-        placeholder.translate(0, -CELL_SIZE);
+        picture.translate(0, -CELL_SIZE);
     }
 
     public void moveRight(Cpu cpu){
@@ -107,7 +110,7 @@ public class Position {
             return;
         }
         col++;
-        placeholder.translate(CELL_SIZE, 0);
+        picture.translate(CELL_SIZE, 0);
     }
 
     public void moveLeft(Cpu cpu){
@@ -116,7 +119,7 @@ public class Position {
             return;
         }
         col--;
-        placeholder.translate(-CELL_SIZE, 0);
+        picture.translate(-CELL_SIZE, 0);
     }
 
 
@@ -125,7 +128,7 @@ public class Position {
     }
 
     public void hide() {
-        placeholder.delete();
+        picture.delete();
         col = -1;
         row = -1;
     }
@@ -136,14 +139,6 @@ public class Position {
 
     public int getRow() {
         return row;
-    }
-
-    public void setColor(Color color) {
-        placeholder.setColor(color);
-    }
-
-    public Color getColor() {
-        return placeholder.getColor();
     }
 
     public boolean equals(Position position){

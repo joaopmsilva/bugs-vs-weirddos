@@ -14,11 +14,9 @@ public class ScoreGrid extends Grid{
     private int coffeePosX;
     private int coffeePosY;
 
+
     public ScoreGrid(int cols, int rows){
         super(cols/3, rows);
-
-        scoreGrid = new Rectangle(PADDING+cols*CELL_SIZE+CELL_SIZE, PADDING, cols/3*CELL_SIZE+CELL_SIZE, rows*CELL_SIZE+CELL_SIZE);
-        scoreGrid.draw();
 
         killPosX = (PADDING+cols*CELL_SIZE+CELL_SIZE+CELL_SIZE) + CELL_SIZE;
         killPosY = PADDING+CELL_SIZE;

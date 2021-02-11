@@ -1,16 +1,17 @@
 package Grid;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class BugGrid extends Grid {
 
-    private Rectangle bugField;
+    private Picture picture;
 
     public BugGrid(int cols, int rows) {
 
         super(cols, rows);
-        bugField = new Rectangle(PADDING, PADDING, cols*CELL_SIZE+CELL_SIZE, rows*CELL_SIZE+CELL_SIZE);
-        bugField.draw();
+        picture = new Picture (0, 0, "gamebackground1.jpg");
+        picture.draw();
     }
 
 

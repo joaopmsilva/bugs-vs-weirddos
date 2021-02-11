@@ -9,7 +9,6 @@ public class BugOne extends Bug {
 
 public BugOne(BugGrid bugGrid, Cpu cpu, CollisionDetector collisionDetector){
     super(bugGrid, cpu, collisionDetector);
-    pos.setColor(Color.RED);
     damage = 1;
 }
 

@@ -8,6 +8,8 @@ public class Cpu {
     private PlayerGrid playerGrid;
     private Position position;
     private static final int DIMENSION = 3;
+    private int cpuHealthXPos;
+    private int cpuHealthYPos;
 
 
     public Cpu(PlayerGrid playerGrid){
@@ -16,6 +18,18 @@ public class Cpu {
         this.playerGrid = playerGrid;
 
         health = 100;
+
+        cpuHealthXPos = ((playerGrid.getColNum()/2)-(DIMENSION/2))*playerGrid.getCellSize()+(playerGrid.getCellSize())+13;
+        cpuHealthYPos = ((playerGrid.getRowNum()/2)-(DIMENSION/2))*playerGrid.getCellSize()+(playerGrid.getCellSize())+14;
+
+    }
+
+    public int getCpuHealthXPos(){
+        return cpuHealthXPos;
+    }
+
+    public int getCpuHealthYPos(){
+        return cpuHealthYPos;
     }
 
     public boolean isAtCpuTopBorder(Position position){

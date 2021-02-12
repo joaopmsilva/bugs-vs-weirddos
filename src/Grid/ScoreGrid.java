@@ -9,8 +9,7 @@ public class ScoreGrid extends Grid{
     private Rectangle scoreGrid;
     private Text killScore;
     private Text coffeeScore;
-    private int killPosX;
-    private int killPosY;
+
     private int coffeePosX;
     private int coffeePosY;
 
@@ -18,21 +17,14 @@ public class ScoreGrid extends Grid{
     public ScoreGrid(int cols, int rows){
         super(cols/3, rows);
 
-        killPosX = (PADDING+cols*CELL_SIZE+CELL_SIZE+CELL_SIZE) + CELL_SIZE;
-        killPosY = PADDING+CELL_SIZE;
+
 
         coffeePosX = PADDING+cols*CELL_SIZE+CELL_SIZE+CELL_SIZE + CELL_SIZE;
         coffeePosY = PADDING + CELL_SIZE + 2*CELL_SIZE;
 
     }
 
-    public int getKillPosX(){
-        return killPosX;
-    }
 
-    public int getKillPosY(){
-        return killPosY;
-    }
 
     public int getCoffeePosX(){
         return coffeePosX;

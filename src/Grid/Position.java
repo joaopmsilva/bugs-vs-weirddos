@@ -40,7 +40,7 @@ public class Position {
                break;
             }
 
-        picture = new Picture (col*CELL_SIZE+PADDING,row*CELL_SIZE+PADDING, "bug-up.png");
+        picture = new Picture (col*CELL_SIZE+PADDING,row*CELL_SIZE+PADDING, "bugfinal.png");
         picture.draw();
 
     }
@@ -59,7 +59,7 @@ public class Position {
             col++;
         }
 
-        picture = new Picture (col*CELL_SIZE+PADDING, row*CELL_SIZE+PADDING, "coffee.png");
+        picture = new Picture (col*CELL_SIZE+PADDING, row*CELL_SIZE+PADDING, "coffee_redone.png");
         picture.draw();
 
     }
@@ -70,7 +70,7 @@ public class Position {
         this.col = col;
         this.row = row;
 
-        picture = new Picture(col*CELL_SIZE+PADDING,row*CELL_SIZE+PADDING, "skull.png");
+        picture = new Picture(col*CELL_SIZE+PADDING,row*CELL_SIZE+PADDING, "uni2.png");
         picture.draw();
 
     }
@@ -80,7 +80,7 @@ public class Position {
         this.col = col;
         this.row= row;
 
-        picture = new Picture(col*CELL_SIZE+PADDING,row*CELL_SIZE+PADDING, "cpu75.jpg");
+        picture = new Picture(col*CELL_SIZE+PADDING,row*CELL_SIZE+PADDING, "recolcpu.jpg");
         picture.draw();
 
     }

@@ -7,6 +7,7 @@ import Grid.ScoreGrid;
 import Player.PlayerController;
 import Props.CoffeeCup;
 import Props.Cpu;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 
 public class Game {
@@ -25,6 +26,7 @@ public class Game {
     private Text bugsKillScore;
     private Text coffeeScore;
     private Text cpuScore;
+    private static Color color = new Color(199, 193, 169);
 
 
     public void init(int cols, int rows) throws InterruptedException {
@@ -35,11 +37,16 @@ public class Game {
         collisionDetector = new CollisionDetector();
         playerController = new PlayerController(playerGrid, cpu, collisionDetector);
         playerController.init();
-        bugsKillScore = new Text( scoreGrid.getKillPosX(), scoreGrid.getKillPosY(), "Score : 0");
+        bugsKillScore = new Text( 875, 206, "0");
+        bugsKillScore.grow(8,8);
+        bugsKillScore.setColor(color);
         bugsKillScore.draw();
-        coffeeScore = new Text(scoreGrid.getCoffeePosX(), scoreGrid.getCoffeePosY(), "Coffees : 0");
+        coffeeScore = new Text(875, 235, "0");
+        coffeeScore.grow(8,8);
+        coffeeScore.setColor(color);
         coffeeScore.draw();
         cpuScore = new Text(cpu.getCpuHealthXPos(), cpu.getCpuHealthYPos(), "100");
+        cpuScore.grow(8, 8);
         cpuScore.draw();
         setStage(stage);
 
@@ -81,14 +88,19 @@ public class Game {
                 if(cpu.getHealth() > 0) {
                     bugs[i].bugMove();
                     bugsKillScore.delete();
-                    bugsKillScore = new Text( scoreGrid.getKillPosX(), scoreGrid.getKillPosY(), "Score : " + bugs[0].getDeadBugs());
+                    bugsKillScore = new Text( 875, 206, String.valueOf(bugs[0].getDeadBugs()));
+                    bugsKillScore.grow(8,8);
+                    bugsKillScore.setColor(color);
                     bugsKillScore.draw();
                     cpuScore.delete();
                     cpuScore = new Text(cpu.getCpuHealthXPos(), cpu.getCpuHealthYPos(), String.valueOf(cpu.getHealth()));
+                    cpuScore.grow(8,8);
                     cpuScore.draw();
                     if(stage>1) {
                         coffeeScore.delete();
-                        coffeeScore = new Text(scoreGrid.getCoffeePosX(), scoreGrid.getCoffeePosY(), "Coffees: " + coffeeCups[0].getPickedCoffees());
+                        coffeeScore = new Text(875, 235, String.valueOf(coffeeCups[0].getPickedCoffees()));
+                        coffeeScore.setColor(color);
+                        coffeeScore.grow(8, 8);
                         coffeeScore.draw();
                     }
                     if (collisionDetector.collisionDetector(bugs[i].getBugPosition(), playerController.getPlayer().getPlayerPosition())) {

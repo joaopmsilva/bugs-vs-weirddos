@@ -3,7 +3,6 @@ import Bug.BugOne;
 import Grid.BugGrid;
 import Grid.CollisionDetector;
 import Grid.PlayerGrid;
-import Grid.ScoreGrid;
 import Player.PlayerController;
 import Props.CoffeeCup;
 import Props.Cpu;
@@ -16,53 +15,84 @@ public class Game {
     private BugGrid bugGrid;
     private Cpu cpu;
     private PlayerGrid playerGrid;
-    private ScoreGrid scoreGrid;
-    private final int DELAY=800;
-    private final int STAGE_DELAY=1000;
     private CollisionDetector collisionDetector;
     private Bug[] bugs;
-    private int stage = 1;
     private CoffeeCup[] coffeeCups;
     private Text bugsKillScore;
     private Text coffeeScore;
     private Text cpuScore;
+    private int coffeesToSpend;
+    private Text coffeeToSpend;
+    private Text stageNumber;
     private static Color color = new Color(199, 193, 169);
+    private final int DELAY = 800;
+    private int stage = 1;
+    private final static int COL_NUM = 26;
+    private final static int ROW_NUM = 26;
+    private final static double CPU_OFFSET = 7.4;
 
 
-    public void init(int cols, int rows) throws InterruptedException {
-        scoreGrid = new ScoreGrid(cols, rows);
-        bugGrid = new BugGrid(cols, rows);
-        playerGrid = new PlayerGrid(cols, rows);
+    public void init() {
+
+        bugGrid = new BugGrid(COL_NUM, ROW_NUM);
+        playerGrid = new PlayerGrid(COL_NUM, ROW_NUM);
         cpu = new Cpu(playerGrid);
         collisionDetector = new CollisionDetector();
-        playerController = new PlayerController(playerGrid, cpu, collisionDetector);
-        playerController.init();
-        bugsKillScore = new Text( 875, 206, "0");
-        bugsKillScore.grow(8,8);
-        bugsKillScore.setColor(color);
-        bugsKillScore.draw();
-        coffeeScore = new Text(875, 235, "0");
-        coffeeScore.grow(8,8);
-        coffeeScore.setColor(color);
-        coffeeScore.draw();
-        cpuScore = new Text(cpu.getCpuHealthXPos(), cpu.getCpuHealthYPos(), "100");
-        cpuScore.grow(8, 8);
-        cpuScore.draw();
+
+        setTexts();
+        playerInit();
         setStage(stage);
 
     }
 
-    public void setStage(int stage) throws InterruptedException {
+    public void playerInit() {
+        playerController = new PlayerController(playerGrid, cpu, collisionDetector);
+        playerController.init();
+    }
 
-        if(stage >= 2){
-            for(CoffeeCup cup: coffeeCups){
-                cup.setWasted();
+
+    public void setTexts() {
+        bugsKillScore = new Text( 875, 206, "0");
+        bugsKillScore.grow(8,8);
+        bugsKillScore.setColor(color);
+        bugsKillScore.draw();
+
+        coffeeScore = new Text(875, 235, "0");
+        coffeeScore.grow(8,8);
+        coffeeScore.setColor(color);
+        coffeeScore.draw();
+
+        coffeeToSpend = new Text(847, 350, "X");
+        coffeeToSpend.grow(8, 8);
+        coffeeToSpend.setColor(Color.RED);
+        coffeeToSpend.draw();
+
+        stageNumber = new Text(865, 440, String.valueOf(stage));
+        stageNumber.grow(8, 8);
+        stageNumber.setColor(color);
+        stageNumber.draw();
+
+        cpuScore = new Text(cpu.getCpuHealthXPos()+CPU_OFFSET, cpu.getCpuHealthYPos(), "100");
+        cpuScore.grow(6*3, 8);
+        cpuScore.draw();
+
+    }
+
+    public void setStage(int stage) {
+
+        coffeesToSpend = stage - 2;
+
+        if(coffeeCups != null){
+            for (CoffeeCup coffeeCup : coffeeCups) {
+                coffeeCup.setWasted();
             }
         }
 
-        coffeeCups = new CoffeeCup[stage-1];
-        for (int j = 0; j < coffeeCups.length; j++) {
-            coffeeCups[j] = new CoffeeCup(playerGrid);
+        if (stage % 2 == 0 && stage != 2) {
+            coffeeCups = new CoffeeCup[stage / 2];
+            for (int i = 0; i < coffeeCups.length; i++) {
+                coffeeCups[i] = new CoffeeCup(playerGrid);
+            }
         }
         collisionDetector.setCoffeeCups(coffeeCups);
 
@@ -71,37 +101,32 @@ public class Game {
         for (int i = 0; i < bugs.length; i++) {
             bugs[i] = new BugOne(bugGrid, cpu, collisionDetector);
         }
-        collisionDetector.setBugsArray(bugs);
-
+        collisionDetector.setBugsArray(bugs, stage);
 
         startStage();
 
     }
 
-    public void startStage() throws InterruptedException {
-
-        Thread.sleep(STAGE_DELAY * stage);
+    public void startStage() {
 
         while (bugs[0].getStageDeadBugs() < bugs.length && cpu.getHealth() > 0) {
-            Thread.sleep(DELAY);
+
+            try{
+                Thread.sleep(DELAY);
+            }catch(InterruptedException | IllegalArgumentException e) {
+                e.printStackTrace();
+            }
+
+            stageUpdate();
+
             for (int i = 0; i < bugs.length; i++) {
                 if(cpu.getHealth() > 0) {
                     bugs[i].bugMove();
-                    bugsKillScore.delete();
-                    bugsKillScore = new Text( 875, 206, String.valueOf(bugs[0].getDeadBugs()));
-                    bugsKillScore.grow(8,8);
-                    bugsKillScore.setColor(color);
-                    bugsKillScore.draw();
-                    cpuScore.delete();
-                    cpuScore = new Text(cpu.getCpuHealthXPos(), cpu.getCpuHealthYPos(), String.valueOf(cpu.getHealth()));
-                    cpuScore.grow(8,8);
-                    cpuScore.draw();
-                    if(stage>1) {
-                        coffeeScore.delete();
-                        coffeeScore = new Text(875, 235, String.valueOf(coffeeCups[0].getPickedCoffees()));
-                        coffeeScore.setColor(color);
-                        coffeeScore.grow(8, 8);
-                        coffeeScore.draw();
+                    bugKillScoreUpdate();
+                    cpuScoreUpdate();
+                    if(stage > 3) {
+                        coffeeScoreUpdate();
+                        coffeeToSpendUpdate();
                     }
                     if (collisionDetector.collisionDetector(bugs[i].getBugPosition(), playerController.getPlayer().getPlayerPosition())) {
                         bugs[i].setIsDead();
@@ -111,13 +136,45 @@ public class Game {
         }
 
         if(cpu.getHealth() < 1) {
-            System.out.println("Game Over at stage " + stage + " with " + bugs[0].getDeadBugs() +
-                    " bugs killed and drank way too much coffee: " + coffeeCups[0].getPickedCoffees());
+            /**
+             * @see
+             * Need to add game over screen/method
+             */
             return;
         }
         setStage(++stage);
 
     }
 
+    public void bugKillScoreUpdate(){
+        bugsKillScore.delete();
+        bugsKillScore = new Text(875, 206, String.valueOf(bugs[0].getDeadBugs()));
+        bugsKillScore.grow(8*String.valueOf(bugs[0].getDeadBugs()).length(),8);
+        bugsKillScore.setColor(color);
+        bugsKillScore.draw();
+    }
+
+    public void cpuScoreUpdate(){
+        cpuScore.delete();
+        cpuScore = new Text(cpu.getCpuHealthXPos()+CPU_OFFSET, cpu.getCpuHealthYPos(), String.valueOf(cpu.getHealth()));
+        cpuScore.grow(6*String.valueOf(cpu.getHealth()).length(),8);
+        cpuScore.draw();
+    }
+
+    public void coffeeScoreUpdate(){
+        coffeeScore.setText(String.valueOf(coffeeCups[0].getPickedCoffees()));
+    }
+
+    public void coffeeToSpendUpdate(){
+        coffeeToSpend.delete();
+        coffeeToSpend = new Text(849, 350, String.valueOf(coffeesToSpend));
+        coffeeToSpend.setColor(color);
+        coffeeToSpend.grow(8*String.valueOf(coffeesToSpend).length(), 8);
+        coffeeToSpend.draw();
+    }
+
+    public void stageUpdate(){
+        stageNumber.setText(String.valueOf(stage));
+    }
 
 }

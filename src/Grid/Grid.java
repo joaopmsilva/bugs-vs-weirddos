@@ -1,7 +1,5 @@
 package Grid;
 
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-
 public abstract class Grid  {
 
     protected static final int PADDING = 10;
@@ -15,15 +13,6 @@ public abstract class Grid  {
         rowNum = rows;
     }
 
-
-    public int colToX(int col) {
-        return col*CELL_SIZE+PADDING;
-    }
-
-    public int rowToY(int row) {
-        return row*CELL_SIZE+PADDING;
-    }
-
     public int getColNum() {
         return colNum;
     }
@@ -35,8 +24,5 @@ public abstract class Grid  {
     public int getCellSize(){
         return CELL_SIZE;
     }
-
-
-
 
 }

@@ -7,17 +7,13 @@ import Props.Cpu;
 
 public class Player {
 
-    private int speed;
     private Position position;
-    private PlayerGrid playerGrid;
     private Cpu cpu;
     private CollisionDetector collisionDetector;
 
 
     public Player(PlayerGrid playerGrid, Cpu cpu, CollisionDetector collisionDetector){
         position = new Position(playerGrid, 5, 5);
-        speed = 1;
-        this.playerGrid = playerGrid;
         this.cpu = cpu;
         this.collisionDetector = collisionDetector;
     }
@@ -45,7 +41,6 @@ public class Player {
             }
             collisionDetector.isOnTopOfBug(position);
             collisionDetector.isOnCoffeeCup(position);
-
         }
 
     }

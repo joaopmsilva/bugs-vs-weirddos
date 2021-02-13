@@ -3,9 +3,44 @@
   <component name="ChangeListManager">
     <list default="true" id="30470d58-32b5-42d5-adcc-a2ad718acb06" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Bug/Bug.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Bug/Bug.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Bug/BugOne.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Bug/BugOne.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Grid/BugGrid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Grid/BugGrid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Grid/CollisionDetector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Grid/CollisionDetector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Grid/Grid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Grid/Grid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Grid/PlayerGrid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Grid/PlayerGrid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Grid/Position.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Grid/Position.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Player/Direction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Player/Direction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Player/Player$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Player/Player$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Player/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Player/PlayerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Player/PlayerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Props/CoffeeCup.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Props/CoffeeCup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Props/Cpu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Props/Cpu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bugs-vs-weirddos/Props/Props.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/bug-up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/coffee.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/cpu75.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/gamebackground1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/skull.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/uni1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bug/Bug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bug/Bug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bug/BugOne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bug/BugOne.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Grid/BugGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/BugGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Grid/CollisionDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/CollisionDetector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Grid/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Grid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Grid/PlayerGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/PlayerGrid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Grid/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid/ScoreGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid/ScoreGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Grid/ScoreGrid.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player/Direction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player/PlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player/PlayerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Props/CoffeeCup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Props/CoffeeCup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Props/Cpu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Props/Cpu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Props/Props.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,5 +110,20 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="java-method">
+          <url>jar://$PROJECT_DIR$/lib/simplegraphics.jar!/org/academiadecodigo/simplegraphics/graphics/Shape.class</url>
+          <line>24</line>
+          <properties class="org.academiadecodigo.simplegraphics.graphics.Shape" method="paintShape" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/bugs_vs_weirddos$Main.ic" NAME="Main Coverage Results" MODIFIED="1613168307380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

@@ -5,17 +5,15 @@ import Grid.Position;
 
 public class Cpu {
     private int health;
-    private PlayerGrid playerGrid;
     private Position position;
     private static final int DIMENSION = 3;
-    private int cpuHealthXPos;
-    private int cpuHealthYPos;
+    private final int cpuHealthXPos;
+    private final int cpuHealthYPos;
 
 
     public Cpu(PlayerGrid playerGrid){
 
         position = new Position(playerGrid, (playerGrid.getColNum()/2)-(DIMENSION/2), (playerGrid.getRowNum()/2)-(DIMENSION/2), DIMENSION);
-        this.playerGrid = playerGrid;
 
         health = 100;
 
@@ -66,7 +64,6 @@ public class Cpu {
 
     public void loseHealth(int damage){
         health -= damage;
-        System.out.println(health);
     }
 
     public int getHealth(){

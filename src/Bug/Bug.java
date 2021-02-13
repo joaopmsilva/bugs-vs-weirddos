@@ -7,11 +7,9 @@ import Props.Cpu;
 
 public abstract class Bug {
 
-    private int speed;
     private boolean isDead;
     protected int damage;
     private boolean isAtCpu;
-    private BugGrid bugGrid;
     private Cpu cpu;
     protected Position pos;
     private static int deadBugs;
@@ -22,9 +20,7 @@ public abstract class Bug {
     private int destRow;
 
 
-
     public Bug(BugGrid bugGrid, Cpu cpu, CollisionDetector collisionDetector){
-        this.bugGrid=bugGrid;
         this.cpu=cpu;
         this.collisionDetector = collisionDetector;
         stageDeadBugs = 0;
@@ -33,7 +29,6 @@ public abstract class Bug {
         destRow = (int)(Math.ceil(bugGrid.getRowNum()/2));
 
         pos = new Position(bugGrid);
-
     }
 
     public int getDeadBugs(){
@@ -49,7 +44,6 @@ public abstract class Bug {
         pos.hide();
         deadBugs++;
         stageDeadBugs++;
-        System.out.println(deadBugs);
     }
 
     public Position getBugPosition(){
@@ -57,9 +51,8 @@ public abstract class Bug {
     }
 
     public void bugMove() {
-        if(isDead){
-            return;
-        }
+        if(isDead) return;
+
         collisionDetector.bugIsOnCoffeeCup(pos);
         isAtCpu();
         if (isAtCpu) {
@@ -69,21 +62,19 @@ public abstract class Bug {
         if(pos.getCol()==destCol){
             if (pos.getRow() < destRow) {
                 pos.moveDown(cpu);
-                return;
             } else {
                 pos.moveUp(cpu);
-                return;
             }
+            return;
 
         }
         if (pos.getRow()==destRow){
             if (pos.getCol() < destCol) {
                 pos.moveRight(cpu);
-                return;
             } else {
                 pos.moveLeft(cpu);
-                return;
             }
+            return;
         }
         int chooseDirection = (int) (Math.random() * 2);
         switch (chooseDirection) {

@@ -4,13 +4,11 @@ import Grid.Grid;
 import Grid.Position;
 
 public class CoffeeCup {
-    private Grid grid;
     private Position position;
     private boolean isPicked;
     private static int pickedCoffees;
 
     public CoffeeCup(Grid grid) {
-        this.grid = grid;
         position = new Position(grid, "c");
     }
 
@@ -18,7 +16,6 @@ public class CoffeeCup {
         isPicked = true;
         position.hide();
         pickedCoffees++;
-        System.out.println(pickedCoffees);
     }
 
     public void setWasted(){

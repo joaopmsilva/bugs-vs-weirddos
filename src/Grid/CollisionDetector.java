@@ -7,9 +7,11 @@ public class CollisionDetector {
 
     private Bug[] bugs;
     private CoffeeCup[] coffeeCups;
+    private int stage;
 
-    public void setBugsArray(Bug[] bugs){
+    public void setBugsArray(Bug[] bugs, int stage){
         this.bugs = bugs;
+        this.stage = stage;
     }
 
     public void setCoffeeCups(CoffeeCup[] coffeeCups) {
@@ -27,20 +29,19 @@ public class CollisionDetector {
                 currentBug.setIsDead();
             }
         }
-
     }
 
     public void isOnCoffeeCup(Position position){
-
+        if(coffeeCups == null) return;
         for(CoffeeCup cup : coffeeCups) {
             if (cup.getPosition().equals(position)) {
                 cup.setPicked();
             }
         }
-
     }
 
     public void bugIsOnCoffeeCup(Position position){
+        if(coffeeCups == null) return;
         for(CoffeeCup cup: coffeeCups){
             if(cup.getPosition().equals(position)){
                 cup.setWasted();
@@ -49,15 +50,12 @@ public class CollisionDetector {
     }
 
     public void killAll(){
-        if (coffeeCups[0].getPickedCoffees() >= 3) {
+        if (coffeeCups != null && coffeeCups[0].getPickedCoffees() >= (stage - 2)) {
             for (Bug bug : bugs) {
                 bug.setIsDead();
             }
-            coffeeCups[0].drinkCoffees(3);
+            coffeeCups[0].drinkCoffees(stage - 2);
         }
-
-
-
     }
 
 }

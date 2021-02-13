@@ -2,8 +2,6 @@ package Grid;
 
 import Props.CoffeeCup;
 import Props.Cpu;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import static Grid.Grid.CELL_SIZE;
@@ -16,8 +14,11 @@ public class Position {
     private Grid grid;
     private Picture picture;
 
-    private Rectangle placeholder;
-
+    /**
+     *
+     * @param grid
+     * @see Bug Constructor
+     */
     public Position(Grid grid){
         this.grid = grid;
         int randomizer = (int)(Math.random()*4);
@@ -45,6 +46,12 @@ public class Position {
 
     }
 
+    /**
+     *
+     * @param grid
+     * @param c
+     * @see CoffeeCup Constructor
+     */
     public Position(Grid grid, String c) {
         this.grid = grid;
         row = (int) (Math.random()*grid.getRowNum());
@@ -64,6 +71,13 @@ public class Position {
 
     }
 
+    /**
+     *
+     * @param grid
+     * @param col
+     * @param row
+     * @see Player Constructor
+     */
     public Position(Grid grid, int col, int row) {
 
         this.grid = grid;
@@ -75,6 +89,14 @@ public class Position {
 
     }
 
+    /**
+     *
+     * @param grid
+     * @param col
+     * @param row
+     * @param dimension - not actually needed
+     * @see Cpu Constructor
+     */
     public Position (Grid grid, int col, int row, int dimension){
         this.grid = grid;
         this.col = col;
@@ -84,6 +106,10 @@ public class Position {
         picture.draw();
 
     }
+
+    /*
+    Moving Methods for player
+     */
 
     public void moveDown(Cpu cpu){
 
@@ -120,11 +146,6 @@ public class Position {
         }
         col--;
         picture.translate(-CELL_SIZE, 0);
-    }
-
-
-    public void show() {
-        placeholder.fill();
     }
 
     public void hide() {

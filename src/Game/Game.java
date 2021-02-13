@@ -34,7 +34,7 @@ public class Game {
     private static Color color = new Color(199, 193, 169);
     private static Color colorRed = new Color(140, 48, 48);
     private final int DELAY = 800;
-    public int stage = 1;
+    public int stage = 6;
     private final static int COL_NUM = 26;
     private final static int ROW_NUM = 26;
     private final static double CPU_OFFSET = 7.4;
@@ -68,7 +68,7 @@ public class Game {
         playerController = new PlayerController(playerGrid, cpu, collisionDetector, this);
         playerController.init();
 
-        Picture startScreen = new Picture(0,0, "startscreen.jpg");
+        Picture startScreen = new Picture(10,10, "startscreen.jpg");
         startScreen.draw();
 
         while(!isStarted){
@@ -86,27 +86,27 @@ public class Game {
 
 
     public void setTexts() {
-        bugsKillScore = new Text( 875, 206, "0");
+        bugsKillScore = new Text( 885, 216, "0");
         bugsKillScore.grow(8,8);
         bugsKillScore.setColor(color);
         bugsKillScore.draw();
 
-        coffeeScore = new Text(875, 235, "0");
+        coffeeScore = new Text(885, 245, "0");
         coffeeScore.grow(8,8);
         coffeeScore.setColor(color);
         coffeeScore.draw();
 
-        coffeeToSpend = new Text(847, 326, "X");
+        coffeeToSpend = new Text(857, 336, "X");
         coffeeToSpend.grow(8, 8);
         coffeeToSpend.setColor(colorRed);
         coffeeToSpend.draw();
 
-        stageNumber = new Text(865, 416, String.valueOf(stage));
+        stageNumber = new Text(875, 426, String.valueOf(stage));
         stageNumber.grow(8, 8);
         stageNumber.setColor(color);
         stageNumber.draw();
 
-        cpuScore = new Text(cpu.getCpuHealthXPos()+CPU_OFFSET, cpu.getCpuHealthYPos(), "100");
+        cpuScore = new Text(cpu.getCpuHealthXPos()+CPU_OFFSET+10, cpu.getCpuHealthYPos()+10, "100");
         cpuScore.grow(6*3, 8);
         cpuScore.draw();
 
@@ -170,10 +170,10 @@ public class Game {
         }
 
         if(cpu.getHealth() < 1) {
-            Picture picture = new Picture(0, 0, "gameover.jpg");
+            Picture picture = new Picture(10, 10, "gameover.jpg");
             picture.draw();
 
-            Text finalScore = new Text(468,360, String.valueOf(bugs[0].getDeadBugs()));
+            Text finalScore = new Text(478,370, String.valueOf(bugs[0].getDeadBugs()));
             finalScore.setColor(colorRed);
             finalScore.grow(15*String.valueOf(bugs[0].getDeadBugs()).length(),20);
             finalScore.draw();
@@ -182,7 +182,7 @@ public class Game {
 
             ScoreSaver scoreSaver = new ScoreSaver(bugs[0].getDeadBugs());
 
-            Text bestScore = new Text(577, 409, String.valueOf(scoreSaver.getHighScore()));
+            Text bestScore = new Text(587, 419, String.valueOf(scoreSaver.getHighScore()));
             bestScore.setColor(color);
             bestScore.grow(7*String.valueOf(scoreSaver.getHighScore()).length(), 8);
             bestScore.draw();
@@ -223,7 +223,7 @@ public class Game {
 
     public void bugKillScoreUpdate(){
         bugsKillScore.delete();
-        bugsKillScore = new Text(875, 206, String.valueOf(bugs[0].getDeadBugs()));
+        bugsKillScore = new Text(885, 216, String.valueOf(bugs[0].getDeadBugs()));
         bugsKillScore.grow(8*String.valueOf(bugs[0].getDeadBugs()).length(),8);
         bugsKillScore.setColor(color);
         bugsKillScore.draw();
@@ -231,7 +231,7 @@ public class Game {
 
     public void cpuScoreUpdate(){
         cpuScore.delete();
-        cpuScore = new Text(cpu.getCpuHealthXPos()+CPU_OFFSET, cpu.getCpuHealthYPos(), String.valueOf(cpu.getHealth()));
+        cpuScore = new Text(cpu.getCpuHealthXPos()+CPU_OFFSET+10, cpu.getCpuHealthYPos()+10, String.valueOf(cpu.getHealth()));
         cpuScore.grow(6*String.valueOf(cpu.getHealth()).length(),8);
         cpuScore.draw();
     }
@@ -242,7 +242,7 @@ public class Game {
 
     public void coffeeToSpendUpdate(){
         coffeeToSpend.delete();
-        coffeeToSpend = new Text(849, 326, String.valueOf(coffeesToSpend));
+        coffeeToSpend = new Text(859, 336, String.valueOf(coffeesToSpend));
         coffeeToSpend.setColor(color);
         coffeeToSpend.grow(8*String.valueOf(coffeesToSpend).length(), 8);
         coffeeToSpend.draw();

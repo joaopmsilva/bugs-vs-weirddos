@@ -8,7 +8,7 @@ public class BugGrid extends Grid {
 
     public BugGrid(int cols, int rows) {
         super(cols, rows);
-        picture = new Picture (0, 0, "background.jpg");
+        picture = new Picture (10, 10, "background.jpg");
         picture.draw();
     }
 

@@ -2,7 +2,7 @@ package Grid;
 
 public abstract class Grid  {
 
-    protected static final int PADDING = 10;
+    protected static final int PADDING = 20;
     protected static final int CELL_SIZE = 25;
 
     private int colNum;

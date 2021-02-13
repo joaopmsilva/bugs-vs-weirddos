@@ -30,7 +30,7 @@ public class Game {
     private static Color color = new Color(199, 193, 169);
     private static Color colorRed = new Color(140, 48, 48);
     private final int DELAY = 800;
-    public int stage = 6;
+    public int stage = 1;
     private final static int COL_NUM = 26;
     private final static int ROW_NUM = 26;
     private final static double CPU_OFFSET = 7.4;

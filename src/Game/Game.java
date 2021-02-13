@@ -28,6 +28,7 @@ public class Game {
     private Text coffeeToSpend;
     private Text stageNumber;
     private static Color color = new Color(199, 193, 169);
+    private static Color colorRed = new Color(140, 48, 48);
     private final int DELAY = 800;
     public int stage = 1;
     private final static int COL_NUM = 26;
@@ -67,7 +68,7 @@ public class Game {
 
         coffeeToSpend = new Text(847, 350, "X");
         coffeeToSpend.grow(8, 8);
-        coffeeToSpend.setColor(Color.RED);
+        coffeeToSpend.setColor(colorRed);
         coffeeToSpend.draw();
 
         stageNumber = new Text(865, 440, String.valueOf(stage));
@@ -141,10 +142,17 @@ public class Game {
         if(cpu.getHealth() < 1) {
             Picture picture = new Picture(0, 0, "gameover.jpg");
             picture.draw();
+
+            Text finalScore = new Text(468,370, String.valueOf(bugs[0].getDeadBugs()));
+            finalScore.setColor(colorRed);
+            finalScore.grow(15*String.valueOf(bugs[0].getDeadBugs()).length(),20);
+            finalScore.draw();
+
             isStarted = false;
             while (!isStarted){
                 Thread.yield();
             }
+            finalScore.delete();
             picture.delete();
             restartGame();
             return;
@@ -156,7 +164,9 @@ public class Game {
 
     public void restartGame(){
         cpu.setHealth();
-        coffeeCups[0].setPickedCoffees();
+        CoffeeCup prop = new CoffeeCup(playerGrid);
+        prop.setPickedCoffees();
+        prop.setWasted();
         for(Bug bug: bugs){
             bug.setIsDead();
         }

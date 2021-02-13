@@ -14,6 +14,7 @@ public abstract class Bug {
     protected Position pos;
     private static int deadBugs;
     private static int stageDeadBugs;
+    private BugGrid bugGrid;
     private CollisionDetector collisionDetector;
 
     private int destCol;
@@ -21,12 +22,10 @@ public abstract class Bug {
 
 
     public Bug(BugGrid bugGrid, Cpu cpu, CollisionDetector collisionDetector){
+        this.bugGrid = bugGrid;
         this.cpu=cpu;
         this.collisionDetector = collisionDetector;
         stageDeadBugs = 0;
-
-        destCol = (int)(Math.ceil(bugGrid.getColNum()/2));
-        destRow = (int)(Math.ceil(bugGrid.getRowNum()/2));
 
         pos = new Position(bugGrid);
     }
@@ -56,7 +55,25 @@ public abstract class Bug {
     }
 
     public void bugMove() {
+
         if(isDead) return;
+
+        int spotRandom = (int) (Math.random() * 3);
+
+        switch(spotRandom){
+            case 0:
+                destCol = (int)(Math.ceil(bugGrid.getColNum()/2))+1;
+                destRow = (int)(Math.ceil(bugGrid.getRowNum()/2))+1;
+                break;
+            case 1:
+                destCol = (int)(Math.ceil(bugGrid.getColNum()/2))-1;
+                destRow = (int)(Math.ceil(bugGrid.getRowNum()/2))-1;
+                break;
+            case 2:
+                destCol = (int)(Math.ceil(bugGrid.getColNum()/2));
+                destRow = (int)(Math.ceil(bugGrid.getRowNum()/2));
+                break;
+        }
 
         collisionDetector.bugIsOnCoffeeCup(pos);
         isAtCpu();

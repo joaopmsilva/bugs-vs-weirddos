@@ -12,6 +12,10 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
+
 public class Game {
 
     private PlayerController playerController;
@@ -36,7 +40,26 @@ public class Game {
     private final static double CPU_OFFSET = 7.4;
     public boolean isStarted;
 
+    private static final String AUDIO = "resources/8bit-st.wav";
+
     public void playerInit() {
+
+        try {
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File(AUDIO).getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audio);
+
+            FloatControl gainControl =
+                    (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
+            clip.start();
+            
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        } catch (IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
 
         bugGrid = new BugGrid(COL_NUM, ROW_NUM);
         playerGrid = new PlayerGrid(COL_NUM, ROW_NUM);

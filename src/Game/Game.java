@@ -1,3 +1,5 @@
+package Game;
+
 import Bug.Bug;
 import Bug.BugOne;
 import Grid.BugGrid;
@@ -8,6 +10,7 @@ import Props.CoffeeCup;
 import Props.Cpu;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Game {
 
@@ -26,13 +29,13 @@ public class Game {
     private Text stageNumber;
     private static Color color = new Color(199, 193, 169);
     private final int DELAY = 800;
-    private int stage = 1;
+    public int stage = 1;
     private final static int COL_NUM = 26;
     private final static int ROW_NUM = 26;
     private final static double CPU_OFFSET = 7.4;
+    public boolean isStarted;
 
-
-    public void init() {
+    public void playerInit() {
 
         bugGrid = new BugGrid(COL_NUM, ROW_NUM);
         playerGrid = new PlayerGrid(COL_NUM, ROW_NUM);
@@ -40,14 +43,14 @@ public class Game {
         collisionDetector = new CollisionDetector();
 
         setTexts();
-        playerInit();
-        setStage(stage);
 
-    }
-
-    public void playerInit() {
-        playerController = new PlayerController(playerGrid, cpu, collisionDetector);
+        playerController = new PlayerController(playerGrid, cpu, collisionDetector, this);
         playerController.init();
+
+        while(!isStarted){
+            Thread.yield();
+        }
+        setStage(stage);
     }
 
 
@@ -136,14 +139,36 @@ public class Game {
         }
 
         if(cpu.getHealth() < 1) {
-            /**
-             * @see
-             * Need to add game over screen/method
-             */
+            Picture picture = new Picture(0, 0, "gameover.jpg");
+            picture.draw();
+            isStarted = false;
+            while (!isStarted){
+                Thread.yield();
+            }
+            picture.delete();
+            restartGame();
             return;
+
         }
         setStage(++stage);
 
+    }
+
+    public void restartGame(){
+        cpu.setHealth();
+        coffeeCups[0].setPickedCoffees();
+        for(Bug bug: bugs){
+            bug.setIsDead();
+        }
+        bugs[0].resetBugs();
+        bugsKillScore.delete();
+        cpuScore.delete();
+        coffeeToSpend.delete();
+        stageNumber.delete();
+        coffeeScore.delete();
+        stage = 1;
+        setTexts();
+        setStage(1);
     }
 
     public void bugKillScoreUpdate(){

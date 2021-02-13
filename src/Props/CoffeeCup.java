@@ -31,6 +31,10 @@ public class CoffeeCup {
         return pickedCoffees;
     }
 
+    public void setPickedCoffees(){
+        pickedCoffees = 0;
+    }
+
     public void drinkCoffees(int num) {
         pickedCoffees -= num;
     }

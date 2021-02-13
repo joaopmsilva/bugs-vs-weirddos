@@ -39,6 +39,11 @@ public abstract class Bug {
         return stageDeadBugs;
     }
 
+    public void resetBugs(){
+        deadBugs = 0;
+        stageDeadBugs = 0;
+    }
+
     public void setIsDead(){
         isDead = true;
         pos.hide();

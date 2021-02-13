@@ -69,4 +69,8 @@ public class Cpu {
     public int getHealth(){
         return health;
     }
+
+    public void setHealth(){
+        health = 100;
+    }
 }

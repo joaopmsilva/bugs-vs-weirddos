@@ -13,8 +13,8 @@ import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import javax.sound.sampled.*;
-import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 public class Game {
 
@@ -40,24 +40,21 @@ public class Game {
     private final static double CPU_OFFSET = 7.4;
     public boolean isStarted;
 
-    private static final String AUDIO = "resources/8bit-st.wav";
-
     public void playerInit() {
 
         try {
-            AudioInputStream audio = AudioSystem.getAudioInputStream(new File(AUDIO).getAbsoluteFile());
+            URL audioUrl = getClass().getResource("/8bit-st.wav");
+            AudioInputStream audio = AudioSystem.getAudioInputStream(audioUrl);
+
             Clip clip = AudioSystem.getClip();
             clip.open(audio);
+            clip.start();
 
             FloatControl gainControl =
                     (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
-            clip.start();
-            
+                gainControl.setValue(-15.0f);
             clip.loop(Clip.LOOP_CONTINUOUSLY);
-        } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        } catch (IOException | LineUnavailableException e) {
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
 
@@ -77,6 +74,7 @@ public class Game {
         while(!isStarted){
             Thread.yield();
         }
+
         startScreen.delete();
         try {
             Thread.sleep(1300);
@@ -98,12 +96,12 @@ public class Game {
         coffeeScore.setColor(color);
         coffeeScore.draw();
 
-        coffeeToSpend = new Text(847, 350, "X");
+        coffeeToSpend = new Text(847, 326, "X");
         coffeeToSpend.grow(8, 8);
         coffeeToSpend.setColor(colorRed);
         coffeeToSpend.draw();
 
-        stageNumber = new Text(865, 440, String.valueOf(stage));
+        stageNumber = new Text(865, 416, String.valueOf(stage));
         stageNumber.grow(8, 8);
         stageNumber.setColor(color);
         stageNumber.draw();
@@ -244,7 +242,7 @@ public class Game {
 
     public void coffeeToSpendUpdate(){
         coffeeToSpend.delete();
-        coffeeToSpend = new Text(849, 350, String.valueOf(coffeesToSpend));
+        coffeeToSpend = new Text(849, 326, String.valueOf(coffeesToSpend));
         coffeeToSpend.setColor(color);
         coffeeToSpend.grow(8*String.valueOf(coffeesToSpend).length(), 8);
         coffeeToSpend.draw();

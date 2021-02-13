@@ -4,7 +4,7 @@ import java.io.*;
 
 public class ScoreSaver {
 
-    private static final String FILE = "resources/score.txt";
+    private static final String FILE = "classpath:score.txt";
     private int currentScore;
     private int highScore;
 

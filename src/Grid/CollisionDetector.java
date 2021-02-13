@@ -24,9 +24,11 @@ public class CollisionDetector {
 
     public void isOnTopOfBug(Position position){
 
-        for(Bug currentBug : bugs){
-            if(currentBug.getBugPosition().equals(position)){
-                currentBug.setIsDead();
+        if (bugs != null) {
+            for (Bug currentBug : bugs) {
+                if (currentBug.getBugPosition().equals(position)) {
+                    currentBug.setIsDead();
+                }
             }
         }
     }

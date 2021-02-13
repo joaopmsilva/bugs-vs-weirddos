@@ -30,7 +30,7 @@ public class Game {
     private static Color color = new Color(199, 193, 169);
     private static Color colorRed = new Color(140, 48, 48);
     private final int DELAY = 800;
-    public int stage = 1;
+    public int stage = 6;
     private final static int COL_NUM = 26;
     private final static int ROW_NUM = 26;
     private final static double CPU_OFFSET = 7.4;
@@ -152,16 +152,26 @@ public class Game {
             Picture picture = new Picture(0, 0, "gameover.jpg");
             picture.draw();
 
-            Text finalScore = new Text(468,370, String.valueOf(bugs[0].getDeadBugs()));
+            Text finalScore = new Text(468,360, String.valueOf(bugs[0].getDeadBugs()));
             finalScore.setColor(colorRed);
             finalScore.grow(15*String.valueOf(bugs[0].getDeadBugs()).length(),20);
             finalScore.draw();
 
             isStarted = false;
+
+            ScoreSaver scoreSaver = new ScoreSaver(bugs[0].getDeadBugs());
+
+            Text bestScore = new Text(577, 409, String.valueOf(scoreSaver.getHighScore()));
+            bestScore.setColor(color);
+            bestScore.grow(7*String.valueOf(scoreSaver.getHighScore()).length(), 8);
+            bestScore.draw();
+
             while (!isStarted){
                 Thread.yield();
             }
+
             finalScore.delete();
+            bestScore.delete();
             picture.delete();
             restartGame();
             return;

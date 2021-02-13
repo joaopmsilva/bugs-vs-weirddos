@@ -48,8 +48,17 @@ public class Game {
         playerController = new PlayerController(playerGrid, cpu, collisionDetector, this);
         playerController.init();
 
+        Picture startScreen = new Picture(0,0, "startscreen.jpg");
+        startScreen.draw();
+
         while(!isStarted){
             Thread.yield();
+        }
+        startScreen.delete();
+        try {
+            Thread.sleep(1300);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         setStage(stage);
     }

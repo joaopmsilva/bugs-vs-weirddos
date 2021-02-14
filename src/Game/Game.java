@@ -52,7 +52,7 @@ public class Game {
 
             FloatControl gainControl =
                     (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-                gainControl.setValue(-15.0f);
+                gainControl.setValue(-5.0f);
             clip.loop(Clip.LOOP_CONTINUOUSLY);
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();

@@ -12,6 +12,9 @@ Bugs VS WeirDDOS requires speed and resilience as the difficulty gets harder wit
 
 ## Technologies
 * Java version: 15.0.1
+* Ant, Git, SimpleGraphics Library
+* I/O Streams, Audio integration
+* Photoshop
 
 ## Context
 This game was created as a part of a 10-day coding challenge, developed with only 3 weeks of learning experience in Java.
